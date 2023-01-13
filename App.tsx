@@ -4,8 +4,8 @@ import Home from './src/pages/index';
 
 export default function App() {
   return (
-    <View>
-      <Home></Home>
+    <View style={{flex:1}}>
+      <Home/>
     </View>
   );
 }
