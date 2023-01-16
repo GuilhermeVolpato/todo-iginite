@@ -16,6 +16,13 @@ export const styles = StyleSheet.create({
     flex: 1,
     marginLeft: 10,
   },
+  nameConcluida: {
+    color: "#808080",
+    fontSize: 16,
+    flex: 1,
+    marginLeft: 10,
+    textDecorationLine: 'line-through'
+  },
   circulo: {
     marginLeft: 10,
     height: 24,
@@ -24,6 +31,17 @@ export const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: "#4EA8DE",
     backgroundColor: "#262626",
+    alignItems: "center",
+    justifyContent: 'center',
+  },
+  circuloConcluida: {
+    marginLeft: 10,
+    height: 24,
+    width: 24,
+    borderRadius: 24,
+    borderWidth: 2,
+    borderColor: "#4EA8DE",
+    backgroundColor: "#4EA8DE",
     alignItems: "center",
     justifyContent: 'center',
   },
