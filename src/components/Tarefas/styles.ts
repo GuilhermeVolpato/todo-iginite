@@ -3,11 +3,12 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   container: {
     width: "100%",
-    backgroundColor: "#1F1E25",
+    backgroundColor: "#262626",
     borderRadius: 5,
     flexDirection: 'row', // alinhar em linha, se stiver em column, alinhado em coluna
     alignItems: 'center',
     marginBottom: 10,
+    height: 64
   },
   name: {
     color: "#FFF",
@@ -15,16 +16,15 @@ export const styles = StyleSheet.create({
     flex: 1,
     marginLeft: 10,
   },
-  buttomText: {
-    color: "#FFF",
-    fontSize: 15,
-  },
-  buttom: {
-    width: 56,
-    height: 56,
-    borderRadius: 5,
-    backgroundColor: "#E23C44",
+  circulo: {
+    marginLeft: 10,
+    height: 24,
+    width: 24,
+    borderRadius: 24,
+    borderWidth: 2,
+    borderColor: "#4EA8DE",
+    backgroundColor: "#262626",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: 'center',
   },
 });

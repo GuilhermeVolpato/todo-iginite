@@ -10,30 +10,31 @@ import {
   Alert
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { List } from "react-native-paper";
 import { Tarefas } from "../components/Tarefas";
+import { styles } from "./styles";
 
 export default function Home() {
   const participants = [
- 
+    "dckhvcbdsflkhv",
+    "dckhvcbdsflkhv"
   ];
 
   function handleParticipantRemove(name: string) {
-    Alert.alert('Remover participante ',` Deseja remover o participante ${name}?`, [
-        {
-            text: 'Sim',
-            onPress: () => Alert.alert("Deletado!")
-        },
-        {
-            text: 'Não',
-            style: 'cancel'
-        }
+    Alert.alert('Remover participante ', ` Deseja remover o participante ${name}?`, [
+      {
+        text: 'Sim',
+        onPress: () => Alert.alert("Deletado!")
+      },
+      {
+        text: 'Não',
+        style: 'cancel'
+      }
     ]);
     console.log(` removeu ${name}`);
   }
 
   return (
-    <View style={{flex: 1}}>
+    <View style={{ flex: 1 }}>
       <View style={styles.container}>
         <View style={styles.banner}>
           <Image source={require("../images/rocket.png")} />
@@ -43,8 +44,25 @@ export default function Home() {
           </View>
         </View>
       </View>
+      <View style={styles.info}>
+
+        <View style={{flexDirection: 'row',alignItems: "center", }}>
+          <Text style={styles.criadas}>Criadas</Text>
+          <View style={styles.circulo}>
+            <Text style={{color: 'white'}}>1</Text>
+          </View>
+        </View>
+
+        <View style={{flexDirection: 'row',alignItems: "center", }}>
+          <Text style={styles.concluidas}>Concluidas</Text>
+          <View style={styles.circulo}>
+              <Text style={{color: 'white'}}>1</Text>
+          </View>
+        </View>
+
+      </View>
       <View style={styles.listaView}>
-          <FlatList
+        <FlatList
           contentContainerStyle={styles.informacaoTarefa}
           data={participants}
           keyExtractor={(item) => item}
@@ -53,16 +71,22 @@ export default function Home() {
               key={item}
               name={item}
               onRemove={() => handleParticipantRemove(item)}
+              onPress={()=> handleParticipantRemove(item)}
             />
           )}
           showsVerticalScrollIndicator={false}
           ListEmptyComponent={() => (
-           <>
-            <Image source={require("../images/Clipboard.png")} />
-            <Text style={styles.vazioListaTitulo}> Você ainda não tem tarefas cadastradas</Text>
-            <Text style={styles.vazioListaSubTexto}> Crie tarefas e organize seus itens</Text>
-          </>
-        
+            <View style={{width: "100%", alignItems: 'center',}}>
+              <View style={{width: "100%", paddingBottom: 48}}>
+                <View style={styles.separador}>
+                  <View style={styles.linha}></View>
+                </View>
+              </View>
+              <Image source={require("../images/Clipboard.png")} />
+              <Text style={styles.vazioListaTitulo}> Você ainda não tem tarefas cadastradas</Text>
+              <Text style={styles.vazioListaSubTexto}> Crie tarefas e organize seus itens</Text>
+            </View>
+
           )}
         />
       </View>
@@ -80,83 +104,3 @@ export default function Home() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "#0D0D0D",
-    alignItems: "center",
-  },
-  banner: {
-    flexDirection: "row",
-    padding: 60,
-    justifyContent: "space-around",
-  },
-  tituloBanner: {
-    flexDirection: "row",
-    paddingLeft: 10,
-    alignItems: "baseline",
-  },
-  inputTarefa: {
-    width: "90%",
-    flexDirection: "row",
-    paddingLeft: 50,
-    alignItems: "center",
-    justifyContent: 'center',
-    marginTop: 125,
-    flex:1,
-    position: 'absolute',
-  },
-  textInput: {
-    height: 56,
-    backgroundColor: "#1F1E25",
-    borderRadius: 5,
-    color: "#FDFCFE",
-    padding: 10,
-    fontSize: 16,
-    flex: 1,
-    marginRight: 4,
-  },
-  buttom: {
-    width: 52,
-    height: 52,
-    borderRadius: 5,
-    backgroundColor: "#1E6F9F",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  buttomText: {
-    color: "#FFF",
-    fontSize: 15,
-  },
-  listaView: {
-    backgroundColor: "#1A1A1A",
-    
-    flex:1
-  },
-  informacaoTarefa: {
-    paddingTop: 50,
-    paddingHorizontal: 10,
-    width: '100%',
-    alignItems: 'center',
-    flexDirection: 'column'
-    
-  },
-  textInfo:{
-    color: '#4EA8DE',
-  },
-  emptyList: {
-    color: "#fff",
-    fontSize: 16,
-    textAlign: 'center'
-  },
-  vazioListaTitulo:{
-    fontSize: 14,
-    fontWeight: 'bold',
-    color: '#808080',
-    paddingTop: 16,
-  },
-  vazioListaSubTexto:{
-    fontSize: 14,
-    color: '#808080'
-  }
-});
