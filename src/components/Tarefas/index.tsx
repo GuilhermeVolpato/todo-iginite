@@ -5,12 +5,12 @@ import { useState } from "react";
 type Props = {
   name: string;
   onRemove: () => void;
+ 
 };
 
 export function Tarefas({ name, onRemove }: Props) {
   const [concluido, setConcluido] = useState<Boolean>();
-  const [qtdConcluido, setQtdConcluido] = useState(0);
-
+  
   function isConcluido() {
     if (concluido) {
       setConcluido(false);
@@ -23,11 +23,13 @@ export function Tarefas({ name, onRemove }: Props) {
     <View style={styles.container}>
       <TouchableOpacity onPress={isConcluido}>
         <View style={concluido ? styles.circuloConcluida : styles.circulo}>
-          {concluido ? (
-            <Image
-              style={{ backgroundColor: "#4EA8DE", height: 10 }}
-              source={require("../../images/Vector.png")}
-            />
+          {!concluido ? (
+            <View>
+              <Image
+                style={{ backgroundColor: "#4EA8DE", height: 10 }}
+                source={require("../../images/Vector.png")}
+              />
+            </View>
           ) : null}
         </View>
       </TouchableOpacity>
