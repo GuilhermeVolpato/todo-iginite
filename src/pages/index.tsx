@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   FlatList,
   Alert,
+  Keyboard
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { Tarefas } from "../components/Tarefas";
@@ -34,6 +35,7 @@ export default function Home() {
       },
     ]);
     setConteudoTarefa("");
+    Keyboard.dismiss();
   }
 
   function handleParticipantRemove(id: number) {
@@ -79,23 +81,23 @@ export default function Home() {
         </View>
       </View>
       <View style={styles.info}>
-        <View style={{ flexDirection: "row", alignItems: "center" }}>
+        <View style={styles.infoTask}>
           <Text style={styles.criadas}>Criadas</Text>
           <View style={styles.circulo}>
-            <Text style={{ color: "white" }}>{tarefa.length}</Text>
+            <Text style={{ color: "#fff" }}>{tarefa.length}</Text>
           </View>
         </View>
 
-        <View style={{ flexDirection: "row", alignItems: "center" }}>
+        <View style={styles.infoTask}>
           <Text style={styles.concluidas}>Concluídas</Text>
           <View style={styles.circulo}>
-            <Text style={{ color: "white" }}>{qtdConcluido}</Text>
+            <Text style={{ color: "#fff" }}>{qtdConcluido}</Text>
           </View>
         </View>
       </View>
       <View style={styles.listaView}>
         <FlatList
-          contentContainerStyle={styles.informacaoTarefa}
+          contentContainerStyle={styles.conteudoLista}
           data={tarefa}
           keyExtractor={(item) => item.decricao}
           renderItem={({ item }) => (
@@ -109,8 +111,8 @@ export default function Home() {
           )}
           showsVerticalScrollIndicator={false}
           ListEmptyComponent={() => (
-            <View style={{ width: "100%", alignItems: "center" }}>
-              <View style={{ width: "100%", paddingBottom: 48 }}>
+            <View style={styles.emptyListContainer}>
+              <View style={styles.emptyListLine}>
                 <View style={styles.separador}>
                   <View style={styles.linha}></View>
                 </View>
@@ -131,7 +133,7 @@ export default function Home() {
       <View style={styles.inputTarefa}>
         <TextInput
           style={styles.textInput}
-          placeholder="Adicionar uma nova tarefa"
+          placeholder="Adicione uma nova tarefa"
           placeholderTextColor="#6b6b6b"
           onChangeText={setConteudoTarefa}
           value={conteudoTarefa}
@@ -141,7 +143,7 @@ export default function Home() {
           activeOpacity={0.7}
           onPress={handleAddTarefa}
         >
-          <Ionicons name="add-circle-outline" size={24} color="#F2F2F2" />
+          <Ionicons name="add-circle-outline" size={20} color="#F2F2F2" />
         </TouchableOpacity>
       </View>
       <StatusBar style="light" />

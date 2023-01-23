@@ -27,7 +27,7 @@ export function Tarefas({ name, onRemove, onConcluir, isConcluida }: Props) {
           {isConcluida ? (
             <View>
               <Image
-                style={{ backgroundColor: "#5E60CE", height: 7.31, width: 12.03 }}
+                style={styles.imageVector}
                 source={require("../../images/Vector.png")}
               />
             </View>
@@ -40,7 +40,7 @@ export function Tarefas({ name, onRemove, onConcluir, isConcluida }: Props) {
       <TouchableOpacity onPress={onRemove}>
         <Image
           source={require("../../images/trash.png")}
-          style={{ marginRight: 10, height: 14, width: 12.48 }}
+          style={styles.imageTrash}
         />
       </TouchableOpacity>
     </View>
