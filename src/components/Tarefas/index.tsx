@@ -4,11 +4,12 @@ import { useState } from "react";
 
 type Props = {
   name: string;
+  isConcluida: boolean;
   onRemove: () => void;
- 
+  onConcluir: () => void;
 };
 
-export function Tarefas({ name, onRemove }: Props) {
+export function Tarefas({ name, onRemove, onConcluir, isConcluida }: Props) {
   const [concluido, setConcluido] = useState<Boolean>();
   
   function isConcluido() {
@@ -21,25 +22,25 @@ export function Tarefas({ name, onRemove }: Props) {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={isConcluido}>
-        <View style={concluido ? styles.circuloConcluida : styles.circulo}>
-          {!concluido ? (
+      <TouchableOpacity onPress={onConcluir}>
+        <View style={isConcluida ? styles.circuloConcluida : styles.circulo}>
+          {isConcluida ? (
             <View>
               <Image
-                style={{ backgroundColor: "#4EA8DE", height: 10 }}
+                style={{ backgroundColor: "#5E60CE", height: 7.31, width: 12.03 }}
                 source={require("../../images/Vector.png")}
               />
             </View>
           ) : null}
         </View>
       </TouchableOpacity>
-      <Text style={!concluido ? styles.name : styles.nameConcluida}>
+      <Text style={isConcluida ? styles.nameConcluida : styles.name}>
         {name}
       </Text>
       <TouchableOpacity onPress={onRemove}>
         <Image
           source={require("../../images/trash.png")}
-          style={{ marginRight: 10, height: 35, width: 35 }}
+          style={{ marginRight: 10, height: 14, width: 12.48 }}
         />
       </TouchableOpacity>
     </View>
