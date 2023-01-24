@@ -10,15 +10,6 @@ type Props = {
 };
 
 export function Tarefas({ name, onRemove, onConcluir, isConcluida }: Props) {
-  const [concluido, setConcluido] = useState<Boolean>();
-  
-  function isConcluido() {
-    if (concluido) {
-      setConcluido(false);
-    } else {
-      setConcluido(true);
-    }
-  }
 
   return (
     <View style={styles.container}>
